@@ -1,3 +1,22 @@
+<script>
+import Vue from 'vue'
+import { SearchBox, PoweredBy, Results, Index, Highlight } from 'vue-instantsearch'
+
+export default {
+  components: {
+    AisIndex: Vue.component('ais-index', Index),
+    AisSearchBox: Vue.component('ais-search-box', SearchBox),
+    AisResults: Vue.component('ais-results', Results),
+    AisPoweredBy: Vue.component('ais-powered-by', PoweredBy),
+    AisHighlight: Vue.component('ais-highlight', Highlight),
+  },
+  data: () => ({
+    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+    ALGOLIA_KEY: process.env.ALGOLIA_KEY,
+  }),
+}
+</script>
+
 <template>
   <q-page
     padding
@@ -33,15 +52,3 @@
     </ais-index>
   </q-page>
 </template>
-
-<script>
-export default {
-  name: 'PageIndex',
-  data () {
-    return {
-      ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
-      ALGOLIA_KEY: process.env.ALGOLIA_KEY,
-    }
-  },
-}
-</script>

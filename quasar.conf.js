@@ -47,6 +47,11 @@ module.exports = function (/* ctx */) {
 
       // transpile: false,
 
+      env: {
+        ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+        ALGOLIA_KEY: process.env.ALGOLIA_KEY,
+      },
+
       sassLoaderOptions: {
         prependData: '@import "./src/css/app.sass";',
       },
