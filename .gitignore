@@ -33,5 +33,13 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+jsconfig.json
 
-.env
+# Cypress UAT assets
+test/cypress/screenshots/**/*
+test/cypress/videos/**/*
+
+# Hidden files
+.env*
+!.env.example
+cypress.env.json
