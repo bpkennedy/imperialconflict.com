@@ -1,3 +1,3 @@
-Cypress.Commands.add('loadHomeRoute', () => {
+Cypress.Commands.add('navigateToWelcome', () => {
   cy.visit('/')
 })
