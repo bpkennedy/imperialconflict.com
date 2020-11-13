@@ -7,17 +7,17 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       {
         path: '/players',
-        component: () => import('pages/Players.vue')
-      }
-    ]
+        component: () => import('pages/Players.vue'),
+      },
+    ],
   },
 
   // Always leave this as last one,
   // but you can also remove it
   {
     path: '*',
-    component: () => import('pages/Error404.vue')
-  }
+    component: () => import('pages/Error404.vue'),
+  },
 ]
 
 export default routes

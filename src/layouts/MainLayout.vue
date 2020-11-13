@@ -60,8 +60,8 @@ const linksData = [
   {
     title: 'Players',
     icon: 'group',
-    link: '/players'
-  }
+    link: '/players',
+  },
 ]
 
 export default {
@@ -70,8 +70,8 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: linksData,
     }
-  }
+  },
 }
 </script>
