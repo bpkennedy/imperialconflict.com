@@ -37,7 +37,7 @@ jsconfig.json
 
 # Cypress UAT assets
 test/cypress/screenshots/**/*
-test/cypress/videos/**/*
+test/cypress/videos/**.mp4
 
 # Hidden files
 .env*
