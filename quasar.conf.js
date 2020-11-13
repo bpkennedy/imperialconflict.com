@@ -47,6 +47,10 @@ module.exports = function (/* ctx */) {
 
       // transpile: false,
 
+      sassLoaderOptions: {
+        prependData: '@import "./src/css/app.sass";',
+      },
+
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to true.
