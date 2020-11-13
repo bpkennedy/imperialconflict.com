@@ -1,5 +1,20 @@
 <script>
-export default {}
+export default {
+  meta: {
+    title: 'Imperial Conflict',
+    titleTemplate: title => `${title} - Rule The Galaxy`,
+    meta: {
+      description: {
+        name: 'description',
+        content: 'Greetings, Commander. Your Empire awaits.',
+      },
+      keywords: {
+        name: 'keywords',
+        content: '4x,space games,strategy games,persistent browser based games,pbbg,empire building,multiplayer',
+      },
+    },
+  },
+}
 </script>
 
 <template>
@@ -11,7 +26,10 @@ export default {}
     >
       Imperial Conflict
     </h1>
-    <div class="row q-py-sm">
+    <div
+      class="row q-py-sm"
+      :class="{'column': $q.screen.lt.sm}"
+    >
       <q-btn
         unelevated
         rounded
@@ -27,6 +45,7 @@ export default {}
         color="white"
         text-color="black"
         class="q-ml-xs text-weight-regular"
+        :class="{'q-mt-md': $q.screen.lt.sm}"
         padding=".75rem 3rem"
         label="log in"
         aria-label="log in"
