@@ -9,7 +9,7 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 
 1. [Fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) this repository
 2. Clone and `cd` into your new fork.
-3. Create a new branch from `master` with `git checkout -b someNewFeatureOrBugfixBranch`
+3. Create a new branch from `main` with `git checkout -b someNewFeatureOrBugfixBranch`
 4. Install packages by running `yarn` command.
 
 ### Commands
