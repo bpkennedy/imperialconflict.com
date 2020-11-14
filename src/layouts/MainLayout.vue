@@ -1,3 +1,23 @@
+<script>
+export default {
+  components: {
+    EssentialLink: () => import('components/EssentialLink.vue'),
+  },
+  data () {
+    return {
+      leftDrawerOpen: false,
+      essentialLinks: [
+        {
+          title: 'Players',
+          icon: 'group',
+          link: '/players',
+        },
+      ],
+    }
+  },
+}
+</script>
+
 <template>
   <q-layout view="hHh Lpr lFf">
     <q-header elevated>
@@ -52,26 +72,3 @@
     </q-page-container>
   </q-layout>
 </template>
-
-<script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Players',
-    icon: 'group',
-    link: '/players'
-  }
-]
-
-export default {
-  name: 'MainLayout',
-  components: { EssentialLink },
-  data () {
-    return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
-    }
-  }
-}
-</script>

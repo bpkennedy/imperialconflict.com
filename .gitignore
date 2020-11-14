@@ -27,9 +27,19 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
+.vscode
+.webstorm
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+jsconfig.json
 
-.env
+# Cypress UAT assets
+test/cypress/screenshots/**/*
+test/cypress/videos/**.mp4
+
+# Hidden files
+.env*
+!.env.example
+cypress.env.json

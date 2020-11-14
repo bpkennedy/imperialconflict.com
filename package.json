@@ -6,8 +6,14 @@
   "author": "FoohonPie <674157+foohonpie@users.noreply.github.com>",
   "private": true,
   "scripts": {
+    "start": "yarn build && quasar serve ./dist/spa --history --https --cors --port 8080 --open",
+    "dev": "quasar dev",
+    "build": "quasar build",
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "lint:fix": "eslint --fix --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0",
+    "test:e2e": "cypress open",
+    "test:e2e:ci": "cypress run --headless --browser chrome"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -17,11 +23,15 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/cli": "^1.1.2",
     "@quasar/quasar-app-extension-dotenv": "^1.0.5",
     "babel-eslint": "^10.0.1",
+    "cypress": "^5.6.0",
+    "cypress-log-to-output": "^1.1.2",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-loader": "^3.0.3",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.0.1",
@@ -41,7 +51,7 @@
   ],
   "engines": {
     "node": ">= 10.18.1",
-    "npm": ">= 6.13.4",
+    "npm": "use Yarn instead of Npm.",
     "yarn": ">= 1.21.1"
   },
   "license": "GNU GPL v3.0"
