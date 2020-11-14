@@ -36,8 +36,8 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 >enforcement can be found in [contributing guidelines](/CONTRIBUTING.md)
 
 ### Test Environment
-Development Front-End: [https://dev.imperialconflict.com/](https://dev.imperialconflict.com/)
-API Docs [http://docs.imperialconflict.com/](http://docs.imperialconflict.com/)
+Development Front-End: [https://dev-quasar.imperialconflict.com/](https://dev-quasar.imperialconflict.com/)
+API Docs: Pending
 
 ## FAQ/issues
 * For Windows 10 development environment I cannot get cypress to run!
