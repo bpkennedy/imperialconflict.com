@@ -11,6 +11,8 @@ You need to have a version of Yarn that is >= 1.21.1 installed on the host machi
 2. Clone and `cd` into your new fork.
 3. Create a new branch from `main` with `git checkout -b someNewFeatureOrBugfixBranch`
 4. Install packages by running `yarn` command.
+5. Copy `.env.example` as `.env`.
+6. Go into your forked repo > Settings > Secrets and add a new *Secret*:  `API_BASE_URL` and make the value `https://dev-api.imperialconflict.com`.
 
 ### Commands
 * `yarn start` build app for production and serve on `http://localhost:8080` *purpose is for startup on production server*
