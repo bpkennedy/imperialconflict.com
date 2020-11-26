@@ -19,7 +19,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-
+      'axios',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -115,11 +115,13 @@ module.exports = function (/* ctx */) {
       // Quasar plugins
       plugins: [
         'Meta',
+        'LocalStorage',
       ],
     },
 
     sourceFiles: {
       router: 'src/router.js',
+      store: 'src/store.js',
     },
 
     // animations: 'all', // --- includes all animations

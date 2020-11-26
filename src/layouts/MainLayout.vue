@@ -1,70 +1,73 @@
 <script>
+import { USER_LOGOUT_PRESS_ACTION } from '../store'
 export default {
-  components: {
-    EssentialLink: () => import('components/EssentialLink.vue'),
-  },
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: [
-        {
-          title: 'Players',
-          icon: 'group',
-          link: '/players',
-        },
-      ],
+      left: false,
+      right: false,
+      USER_LOGOUT_PRESS_ACTION,
     }
   },
 }
 </script>
 
 <template>
-  <q-layout view="hHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh LpR fFf">
+    <q-header
+      elevated
+      class="bg-primary text-white"
+    >
       <q-toolbar>
         <q-btn
-          flat
           dense
+          flat
           round
           icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="left = !left"
         />
 
-        <q-toolbar-title
-          shrink
-          class="q-px-sm"
-        >
-          <q-btn
-            stretch
-            flat
-            label="Imperial Conflict"
-            type="a"
-            to="/"
-          />
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
+          </q-avatar>
+          Title
         </q-toolbar-title>
+
+        <q-btn
+          dense
+          flat
+          outline
+          label="LOG OUT"
+          aria-label="LOG OUT"
+          type="a"
+          @click="$store.dispatch(USER_LOGOUT_PRESS_ACTION)"
+        />
+        <q-btn
+          dense
+          flat
+          round
+          icon="menu"
+          @click="right = !right"
+        />
       </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
+      v-model="left"
+      side="left"
+      overlay
       bordered
-      content-class="bg-grey-1"
     >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+      <!-- drawer content -->
+    </q-drawer>
+
+    <q-drawer
+      v-model="right"
+      side="right"
+      overlay
+      bordered
+    >
+      <!-- drawer content -->
     </q-drawer>
 
     <q-page-container>
