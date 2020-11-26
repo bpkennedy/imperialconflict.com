@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <q-page class="flex flex-center fullscreen column bg-black">
+  <q-page class="flex flex-center column">
     <h1
       role="heading"
       aria-level="1"
@@ -36,8 +36,10 @@ export default {
         color="primary"
         class="text-weight-regular"
         padding=".75rem 3rem"
-        label="create an empire"
-        aria-label="create an empire"
+        label="CREATE AN EMPIRE"
+        aria-label="CREATE AN EMPIRE"
+        type="a"
+        to="/register"
       />
       <q-btn
         unelevated
@@ -47,8 +49,10 @@ export default {
         class="q-ml-xs text-weight-regular"
         :class="{'q-mt-md': $q.screen.lt.sm}"
         padding=".75rem 3rem"
-        label="log in"
-        aria-label="log in"
+        label="LOG IN"
+        aria-label="LOG IN"
+        type="a"
+        to="/login"
       />
     </div>
   </q-page>
