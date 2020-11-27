@@ -20,6 +20,20 @@ export default {
       }
     },
   },
+  meta: {
+    title: 'Register | Imperial Conflict',
+    titleTemplate: title => `${title}`,
+    meta: {
+      description: {
+        name: 'description',
+        content: 'Register an account for Imperial Conflict',
+      },
+      keywords: {
+        name: 'keywords',
+        content: '4x,space games,strategy games,persistent browser based games,pbbg,empire building,multiplayer',
+      },
+    },
+  },
 }
 </script>
 

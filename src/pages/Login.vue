@@ -14,6 +14,20 @@ export default {
       this.$store.dispatch(USER_LOGIN_SUBMIT_ACTION, formModels)
     },
   },
+  meta: {
+    title: 'Login | Imperial Conflict',
+    titleTemplate: title => `${title}`,
+    meta: {
+      description: {
+        name: 'description',
+        content: 'Log in to Imperial Conflict',
+      },
+      keywords: {
+        name: 'keywords',
+        content: '4x,space games,strategy games,persistent browser based games,pbbg,empire building,multiplayer',
+      },
+    },
+  },
 }
 </script>
 

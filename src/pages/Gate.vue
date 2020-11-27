@@ -4,6 +4,20 @@ export default {
   computed: {
     ...mapState(['user']),
   },
+  meta: {
+    title: 'Gate | Imperial Conflict',
+    titleTemplate: title => `${title}`,
+    meta: {
+      description: {
+        name: 'description',
+        content: 'This is your empire, Commander',
+      },
+      keywords: {
+        name: 'keywords',
+        content: '4x,space games,strategy games,persistent browser based games,pbbg,empire building,multiplayer',
+      },
+    },
+  },
 }
 </script>
 

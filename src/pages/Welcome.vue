@@ -2,11 +2,11 @@
 export default {
   meta: {
     title: 'Imperial Conflict',
-    titleTemplate: title => `${title} - Rule The Galaxy`,
+    titleTemplate: title => `${title} | Rule The Galaxy`,
     meta: {
       description: {
         name: 'description',
-        content: 'Greetings, Commander. Your Empire awaits.',
+        content: 'Greetings, Commander. Your Empire awaits',
       },
       keywords: {
         name: 'keywords',
