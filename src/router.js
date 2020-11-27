@@ -1,15 +1,56 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import auth from './services/auth'
+import store, { USER_LOGOUT_PRESS_ACTION } from './store'
 
 Vue.use(VueRouter)
+
+const requiresAuth = (to, from, next) => {
+  if (!auth.loggedIn()) {
+    next({
+      path: '/',
+      query: { redirect: to.fullPath },
+    })
+  } else {
+    next()
+  }
+}
+
+const redirectGateIfAuthenticated = (to, from, next) => {
+  if (auth.loggedIn()) {
+    next({
+      path: '/gate',
+      query: { redirect: to.fullPath },
+    })
+  } else {
+    next()
+  }
+}
 
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/PublicLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Welcome.vue') },
+      { path: '/login', component: () => import('pages/Login.vue') },
+      { path: '/logout',
+        beforeEnter: async (to, from, next) => {
+          await store.dispatch(USER_LOGOUT_PRESS_ACTION)
+          next('/')
+        },
+      },
+      { path: '/register', component: () => import('pages/Register.vue') },
     ],
+    beforeEnter: redirectGateIfAuthenticated,
+  },
+  {
+    path: '/gate',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Gate.vue') },
+    ],
+    beforeEnter: requiresAuth,
   },
   {
     path: '*',

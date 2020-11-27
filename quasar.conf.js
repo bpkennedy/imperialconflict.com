@@ -19,7 +19,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-
+      'axios',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -50,6 +50,7 @@ module.exports = function (/* ctx */) {
       env: {
         ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
         ALGOLIA_KEY: process.env.ALGOLIA_KEY,
+        API_BASE_URL: process.env.API_BASE_URL,
       },
 
       sassLoaderOptions: {
@@ -97,7 +98,9 @@ module.exports = function (/* ctx */) {
     framework: {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
-      config: {},
+      config: {
+        dark: 'auto',
+      },
 
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
@@ -108,17 +111,22 @@ module.exports = function (/* ctx */) {
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
-      // components: [],
+      components: [
+        'QInput',
+        'QIcon',
+      ],
       // directives: [],
 
       // Quasar plugins
       plugins: [
         'Meta',
+        'LocalStorage',
       ],
     },
 
     sourceFiles: {
       router: 'src/router.js',
+      store: 'src/store.js',
     },
 
     // animations: 'all', // --- includes all animations
