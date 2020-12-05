@@ -2,6 +2,10 @@ Cypress.Commands.add('navigateToWelcome', () => {
   cy.visit('/')
 })
 
+Cypress.Commands.add('navigateToPlanet', () => {
+  cy.visit('/planets/89,8,45,2')
+})
+
 Cypress.Commands.add('goLogin', () => {
   cy.contains('LOG IN').click()
   cy.verifyNotHomepage()
