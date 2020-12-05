@@ -45,6 +45,13 @@ const routes = [
     beforeEnter: redirectGateIfAuthenticated,
   },
   {
+    path: '/planets/:planetId',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Planet.vue') },
+    ],
+  },
+  {
     path: '/gate',
     component: () => import('layouts/MainLayout.vue'),
     children: [

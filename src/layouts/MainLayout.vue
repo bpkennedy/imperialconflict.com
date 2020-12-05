@@ -55,7 +55,6 @@ export default {
     <q-drawer
       v-model="left"
       side="left"
-      overlay
       bordered
     >
       <!-- drawer content -->
@@ -64,7 +63,6 @@ export default {
     <q-drawer
       v-model="right"
       side="right"
-      overlay
       bordered
     >
       <!-- drawer content -->

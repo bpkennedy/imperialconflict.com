@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
 import { asyncRequestWithLoader } from './services/utils'
+import { transformPlanetDetailToModels } from './services/models'
 import auth from './services/auth'
 Vue.use(Vuex)
 
@@ -11,13 +12,16 @@ export const USER_LOGOUT_PRESS_ACTION = 'USER_LOGOUT_PRESS_ACTION'
 export const USER_PROFILE_UPDATED_ACTION = 'USER_PROFILE_UPDATED_ACTION'
 export const API_ERROR_OCCURRED_ACTION = 'API_ERROR_OCCURRED_ACTION'
 export const CLEAR_API_ERROR_MESSAGE_ACTION = 'CLEAR_API_ERROR_MESSAGE_ACTION'
+export const PLANET_DETAILS_REQUESTED = 'PLANET_DETAILS_REQUESTED'
 
 const SET_USER_MUTATION = 'SET_USER_MUTATION'
 const SET_API_ERROR_MUTATION = 'SET_API_ERROR_MUTATION'
+const SET_LOADED_PLANET_VIEW_MUTATION = 'SET_LOADED_PLANET_VIEW_MUTATION'
 
 const initialState = () => ({
-  user: null,
   apiErrorMessage: null,
+  loadedPlanetDetails: null,
+  user: null,
 })
 
 const setValue = key => (state, val) => {
@@ -65,10 +69,20 @@ export default new Vuex.Store({
         },
       })
     },
+    async [PLANET_DETAILS_REQUESTED]({ commit }, planetId) {
+      await asyncRequestWithLoader({
+        tryCb: async () => {
+          const planetResponse = await Vue.prototype.$axios.get(`/planets/${planetId}`)
+          const planetDetailView = transformPlanetDetailToModels(planetResponse)
+          commit(SET_LOADED_PLANET_VIEW_MUTATION, planetDetailView)
+        },
+      })
+    },
   },
   mutations: {
     [SET_USER_MUTATION]: setValue('user'),
     [SET_API_ERROR_MUTATION]: setValue('apiErrorMessage'),
+    [SET_LOADED_PLANET_VIEW_MUTATION]: setValue('loadedPlanetDetails'),
   },
   getters: {},
 })
