@@ -1,5 +1,15 @@
+@import './quasar.variables'
 // app global css in Sass form
 
 .dense-btn-height
   height: 2rem
   line-height: 2rem
+
+a
+  color: $primary
+  &:hover
+    color: lighten($primary, 20%)
+  &:visited
+    color: $accent
+    &:hover
+      color: lighten($accent, 20%)

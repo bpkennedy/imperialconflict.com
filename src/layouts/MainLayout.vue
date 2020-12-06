@@ -1,5 +1,6 @@
 <script>
 import { USER_LOGOUT_PRESS_ACTION } from '../store'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -7,6 +8,9 @@ export default {
       right: false,
       USER_LOGOUT_PRESS_ACTION,
     }
+  },
+  computed: {
+    ...mapState(['user']),
   },
 }
 </script>
@@ -34,6 +38,7 @@ export default {
         </q-toolbar-title>
 
         <q-btn
+          v-if="user"
           dense
           flat
           outline
@@ -41,6 +46,17 @@ export default {
           aria-label="LOG OUT"
           type="a"
           @click="$store.dispatch(USER_LOGOUT_PRESS_ACTION)"
+        />
+        <q-btn
+          v-else
+          dense
+          flat
+          outline
+          label="LOG IN"
+          aria-label="LOG IN"
+          type="a"
+          text-color="white"
+          to="/Login"
         />
         <q-btn
           dense
@@ -55,7 +71,6 @@ export default {
     <q-drawer
       v-model="left"
       side="left"
-      overlay
       bordered
     >
       <!-- drawer content -->
@@ -64,7 +79,6 @@ export default {
     <q-drawer
       v-model="right"
       side="right"
-      overlay
       bordered
     >
       <!-- drawer content -->

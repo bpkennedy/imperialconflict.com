@@ -1,0 +1,40 @@
+<script>
+import { mapState } from 'vuex'
+import { PLANET_DETAILS_REQUESTED } from 'src/store'
+export default {
+  components: {
+    PlanetDetail: () => import('../components/PlanetDetail.vue'),
+  },
+  computed: {
+    ...mapState(['loadedPlanetDetails']),
+  },
+  meta: {
+    title: 'Planet | Imperial Conflict',
+    titleTemplate: title => `${title}`,
+    meta: {
+      description: {
+        name: 'description',
+        content: 'This is your empire, Commander',
+      },
+      keywords: {
+        name: 'keywords',
+        content: '4x,space games,strategy games,persistent browser based games,pbbg,empire building,multiplayer',
+      },
+    },
+  },
+  created() {
+    this.$store.dispatch(PLANET_DETAILS_REQUESTED, this.$route.params.planetId)
+  },
+}
+</script>
+
+<template>
+  <q-page class="row justify-center items-start">
+    <div class="column col-12 q-pa-md self-stretch">
+      <planet-detail
+        v-if="loadedPlanetDetails"
+        :planet-details="loadedPlanetDetails"
+      />
+    </div>
+  </q-page>
+</template>
