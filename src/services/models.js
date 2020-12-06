@@ -3,17 +3,13 @@ import { stringToDecimal, wholeNumberFromDecimal } from './math'
 export const PLANET_MODEL = 'PLANET_MODEL'
 export const SYSTEM_MODEL = 'SYSTEM_MODEL'
 export const EMPIRE_MODEL = 'EMPIRE_MODEL'
+export const PLANET_BONUS_MODEL = 'PLANET_BONUS_MODEL'
 
 const baseSchema = {
-  [PLANET_MODEL]: {
-    label: '',
-    number: '',
-    image: '',
-    bonuses: [{
-      name: '',
-      amount: '',
-      icon: '',
-    }],
+  [PLANET_BONUS_MODEL]: {
+    name: '',
+    amount: '',
+    icon: '',
   },
   [SYSTEM_MODEL]: {
     name: '',
@@ -26,6 +22,22 @@ const baseSchema = {
     name: '',
     family_id: 234,
   },
+}
+
+const composedSchema = {
+  [PLANET_MODEL]: {
+    label: '',
+    number: '',
+    image: '',
+    bonuses: [baseSchema[PLANET_BONUS_MODEL]],
+  },
+}
+
+export function PlanetBonus(name, amount, icon) {
+  Object.assign(this, baseSchema[PLANET_BONUS_MODEL])
+  this.name = name
+  this.amount = amount
+  this.icon = icon
 }
 
 export function PlanetView(
@@ -42,7 +54,7 @@ export function PlanetView(
   empName,
   empFamilyId,
 ) {
-  this.planet = Object.assign({}, baseSchema[PLANET_MODEL])
+  this.planet = Object.assign({}, composedSchema[PLANET_MODEL])
   this.system = Object.assign({}, baseSchema[SYSTEM_MODEL])
   this.empire = Object.assign({}, baseSchema[EMPIRE_MODEL])
 
@@ -67,11 +79,11 @@ function getGalaxySystemCoordinates (system) {
 function transformPlanetBonuses(bonuses) {
   const bonusesArray = []
   for (const [key, value] of Object.entries(bonuses)) {
-    bonusesArray.push({
-      name: key,
-      amount: wholeNumberFromDecimal(stringToDecimal(value)),
-      icon: 'https://imperialconflict.com/images/Status/resource4.gif',
-    })
+    const newBonus = new PlanetBonus(
+      key,
+      wholeNumberFromDecimal(stringToDecimal(value)),
+      'https://imperialconflict.com/images/Status/resource4.gif')
+    bonusesArray.push(newBonus)
   }
   return bonusesArray
 }
