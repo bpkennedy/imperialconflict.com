@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import router from './router'
 import { getActiveEmpires } from './api/ActiveEmpireModel'
 import auth from './api/auth'
+import { getPlanetView } from 'src/api/PlanetViewModel'
 import { asyncRequestWithLoader } from 'src/api'
 Vue.use(Vuex)
 
@@ -12,7 +13,7 @@ export const USER_LOGOUT_PRESS_ACTION = 'USER_LOGOUT_PRESS_ACTION'
 export const USER_PROFILE_REFRESH_REQUESTED_ACTION = 'USER_PROFILE_REFRESH_REQUESTED_ACTION'
 export const API_ERROR_OCCURRED_ACTION = 'API_ERROR_OCCURRED_ACTION'
 export const CLEAR_API_ERROR_MESSAGE_ACTION = 'CLEAR_API_ERROR_MESSAGE_ACTION'
-export const PLANET_DETAILS_REQUESTED = 'PLANET_DETAILS_REQUESTED'
+export const PLANET_DETAILS_REQUESTED_ACTION = 'PLANET_DETAILS_REQUESTED_ACTION'
 
 const SET_USER_MUTATION = 'SET_USER_MUTATION'
 const SET_API_ERROR_MUTATION = 'SET_API_ERROR_MUTATION'
@@ -76,12 +77,10 @@ export default new Vuex.Store({
         },
       })
     },
-    async [PLANET_DETAILS_REQUESTED]({ commit }, planetId) {
+    async [PLANET_DETAILS_REQUESTED_ACTION]({ commit }, planetId) {
       await asyncRequestWithLoader({
         tryCb: async () => {
-          const planetResponse = await Vue.prototype.$axios.get(`/planets/${planetId}`)
-          const planetDetailView = transformPlanetDetailToModels(planetResponse)
-          commit(SET_LOADED_PLANET_VIEW_MUTATION, planetDetailView)
+          commit(SET_LOADED_PLANET_VIEW_MUTATION, await getPlanetView(planetId))
         },
       })
     },

@@ -1,6 +1,6 @@
 <script>
 import { mapState } from 'vuex'
-import { PLANET_DETAILS_REQUESTED } from 'src/store'
+import { PLANET_DETAILS_REQUESTED_ACTION } from 'src/store'
 export default {
   components: {
     PlanetDetail: () => import('../components/PlanetDetail.vue'),
@@ -23,7 +23,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch(PLANET_DETAILS_REQUESTED, this.$route.params.planetId)
+    this.$store.dispatch(PLANET_DETAILS_REQUESTED_ACTION, this.$route.params.planetId)
   },
 }
 </script>
