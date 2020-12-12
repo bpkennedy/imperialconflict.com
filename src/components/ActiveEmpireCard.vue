@@ -68,6 +68,7 @@ export default {
         <q-tooltip
           :delay="550"
           max-width="18rem"
+          content-class="tooltip-font-size"
           transition-show="scale"
           transition-hide="scale"
         >
