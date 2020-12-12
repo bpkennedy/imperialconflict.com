@@ -16,6 +16,8 @@ export function ActiveEmpire(
   this.family_id = empFamId
   this.id = empId
   this.name = empName
+
+  this.galaxy = {}
   this.galaxy.name = galName
   this.galaxy.description = galDesc
   this.galaxy.map_image_path = galImage
