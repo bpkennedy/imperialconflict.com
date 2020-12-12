@@ -13,12 +13,29 @@ export default {
   data: () => ({
     isGoodAvatar: true,
     isGoodEmpireImage: true,
+    descriptionIsOverflowing: false,
+    expanded: false,
   }),
   methods: {
     // TODO placeholder method for clicking on Active Empire Card
     doSomething() {
       console.log('test')
     },
+    checkIfOverflowing() {
+      if(this.$refs[this.descriptionRef].clientHeight < this.$refs[this.descriptionRef].scrollHeight) {
+        this.descriptionIsOverflowing = true
+      }
+    },
+  },
+  computed: {
+    descriptionRef() {
+      return `empire-${this.activeEmpire.id}description`
+    },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.checkIfOverflowing()
+    }, 100)
   },
 }
 </script>
@@ -63,18 +80,23 @@ export default {
     />
 
     <q-card-section>
-      <div class="ellipsis-3-lines line-6-clamp">
+      <div
+        :ref="`empire-${activeEmpire.id}description`"
+        class="q-mb-md ellipsis-3-lines line-6-clamp"
+        :class="{'no-ellipsis': expanded }"
+      >
         {{ activeEmpire.galaxy.description }}
-        <q-tooltip
-          :delay="550"
-          max-width="18rem"
-          content-class="tooltip-font-size"
-          transition-show="scale"
-          transition-hide="scale"
-        >
-          {{ activeEmpire.galaxy.description }}
-        </q-tooltip>
       </div>
+      <q-btn
+        v-if="descriptionIsOverflowing"
+        color="white"
+        flat
+        dense
+        :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+        @click.stop="expanded = !expanded"
+        :label="expanded ? 'COLLAPSE' : 'EXPAND'"
+        class="absolute-bottom full-width no-ripple text-body2"
+      />
     </q-card-section>
 
     <q-separator />
@@ -102,4 +124,7 @@ export default {
     outline: 1px solid $primary
 .line-6-clamp
   -webkit-line-clamp: 6
+.no-ellipsis
+  -webkit-line-clamp: initial
+  -webkit-box-orient: initial
 </style>

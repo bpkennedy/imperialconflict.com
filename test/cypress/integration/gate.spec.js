@@ -46,4 +46,25 @@ describe('Gate', function () {
     cy.contains('FoohonPie').should('not.exist')
 
   })
+
+  it('user can expand and collapse overflowing description', () => {
+    cy.loginUser({
+      email: 'foo@bar.baz',
+      password: 'foobarbaz',
+    })
+    cy.verifyGatePage()
+
+    cy.contains('EXPAND').should('be.visible')
+    cy.contains('COLLAPSE').should('not.exist')
+
+    cy.contains('EXPAND').click()
+
+    cy.contains('EXPAND').should('not.exist')
+    cy.contains('COLLAPSE').should('be.visible')
+
+    cy.contains('COLLAPSE').click()
+
+    cy.contains('EXPAND').should('be.visible')
+    cy.contains('COLLAPSE').should('not.exist')
+  })
 })
