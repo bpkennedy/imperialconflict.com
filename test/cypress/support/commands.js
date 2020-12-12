@@ -15,7 +15,6 @@ Cypress.Commands.add('goLogin', () => {
 Cypress.Commands.add('loginFormExists', () => {
   cy.contains('Email *').should('be.visible')
   cy.contains('Password *').should('be.visible')
-  cy.contains('Name *').should('not.be.visible')
 })
 
 Cypress.Commands.add('registerFormExists', () => {

@@ -56,9 +56,7 @@ module.exports = function (/* ctx */) {
         API_BASE_URL: process.env.API_BASE_URL,
       },
 
-      sassLoaderOptions: {
-        prependData: '@import "./src/css/app.sass";',
-      },
+      sassLoaderOptions: {},
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
@@ -125,7 +123,10 @@ module.exports = function (/* ctx */) {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
       config: {
-        dark: 'auto',
+        dark: true,
+        loading: {
+          delay: 300,
+        },
       },
 
       // Possible values for "importStrategy":
@@ -147,6 +148,7 @@ module.exports = function (/* ctx */) {
       plugins: [
         'Meta',
         'LocalStorage',
+        'Loading',
       ],
     },
 

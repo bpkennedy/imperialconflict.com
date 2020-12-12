@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import auth from './services/auth'
+import auth from './api/auth'
 import store, { USER_LOGOUT_PRESS_ACTION } from './store'
 
 Vue.use(VueRouter)

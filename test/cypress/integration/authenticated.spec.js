@@ -24,7 +24,6 @@ describe('Login', function () {
     const user = uniqueUser()
     cy.registerUser(user)
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
   })
 
   it('should fail to register with non-matching passwords', () => {
@@ -34,14 +33,12 @@ describe('Login', function () {
     cy.typeIntoFormField('Password Confirm *', 'pass1234')
     cy.getAriaLabel('Register User Button').click()
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
   })
 
   it('should not allow registration with duplicate email addresses', () => {
     const user = uniqueUser()
     cy.registerUser(user)
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
     cy.logout()
     cy.registerUser(user)
     cy.contains('The email has already been taken').should('be.visible')
@@ -51,14 +48,12 @@ describe('Login', function () {
     const user = uniqueUser({ password: 'goodPassword', confirmPassword: 'goodPassword' })
     cy.registerUser(user)
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
     cy.logout()
     cy.loginUser({ email: user.email, password: 'wrongPassword' })
     cy.contains('Failed to login with the provided email and password').should('be.visible')
     cy.typeIntoFormField('Password *', 'goodPassword')
     cy.getAriaLabel('Login User Button').click()
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
   })
 
   it('should use localStorage auth token on soft browser refresh', () => {
@@ -67,9 +62,7 @@ describe('Login', function () {
     cy.logout()
     cy.loginUser({ email: user.email, password: user.password })
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
     cy.reload()
     cy.verifyGatePage()
-    cy.contains(user.name).should('be.visible')
   })
 })

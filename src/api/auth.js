@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import { LocalStorage } from 'quasar'
-import { errorMessageFromApiResponse } from './utils'
 import {
   messages,
   FAIL_REGISTER_MESSAGE,
   INVALID_LOGIN_MESSAGE,
   FAIL_LOGIN_MESSAGE,
   FAIL_GET_USER_MESSAGE,
-} from './messages'
+} from '../services/messages'
 import store, { API_ERROR_OCCURRED_ACTION } from '../store'
+import { errorMessageFromApiResponse } from 'src/api/index'
 
 const AUTH_TOKEN_NAME = 'imperialConflictUserToken'
 
@@ -52,7 +52,11 @@ export default {
     }
   },
   async setProfile() {
-    this.profile = await this.getUser()
+    if (Vue.prototype.$axios.defaults.headers.common['Authorization']) {
+      this.profile = await this.getUser()
+    } else {
+      this.profile = null
+    }
     return this.profile
   },
   setAxiosAuthHeader(token) {

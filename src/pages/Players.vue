@@ -4,11 +4,11 @@ import { SearchBox, PoweredBy, Results, Index, Highlight } from 'vue-instantsear
 
 export default {
   components: {
-    AisIndex: Vue.component('ais-index', Index),
-    AisSearchBox: Vue.component('ais-search-box', SearchBox),
-    AisResults: Vue.component('ais-results', Results),
-    AisPoweredBy: Vue.component('ais-powered-by', PoweredBy),
-    AisHighlight: Vue.component('ais-highlight', Highlight),
+    AisIndex: Vue.component('AisIndex', Index),
+    AisSearchBox: Vue.component('AisSearchBox', SearchBox),
+    AisResults: Vue.component('AisResults', Results),
+    AisPoweredBy: Vue.component('AisPoweredBy', PoweredBy),
+    AisHighlight: Vue.component('AisHighlight', Highlight),
   },
   data: () => ({
     ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,

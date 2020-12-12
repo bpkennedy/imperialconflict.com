@@ -1,6 +1,6 @@
 <script>
 import { isBonusAmountGreen } from '../services/math'
-import { PlanetBonus } from '../services/models'
+import { PlanetBonus } from 'src/api/PlanetBonusModel'
 export default {
   components: {
     SafeImage: () => import('./SafeImage.vue'),
