@@ -17,10 +17,7 @@ export default {
 </script>
 
 <template>
-  <q-card
-    dark
-    class="full-height column items-center"
-  >
+  <q-card class="full-height column items-center">
     <card-title :title="`Planet ${planetDetails.planet.label}`" />
     <q-card-section>
       <safe-image
