@@ -27,13 +27,21 @@ export default {
       imageElement.src = this.src
       this.timer = setTimeout(() => {
         if (!imageElement.complete || !imageElement.naturalWidth) {
-          this.isValidUrl = false
+          this.invalidate()
         }
       }, this.timeout)
     },
+    invalidate() {
+      this.$emit('invalidated')
+      this.isValidUrl = false
+    },
+    validate() {
+      this.$emit('validated')
+      this.isValidUrl = true
+    },
     initialize() {
       window.clearTimeout(this.timer)
-      this.isValidUrl = true
+      this.validate()
       this.timer = null
       this.testImageUrl()
     },
@@ -59,17 +67,10 @@ export default {
     <q-img
       :src="src"
       :alt="title"
-      @error="isValidUrl = false"
+      @error="invalidate"
       native-context-menu
       class="full-width full-height"
     >
-      <template #loading>
-        <q-spinner
-          color="primary"
-          size="1em"
-        />
-      </template>
-
       <template #error>
         <cannot-load-image :url="src" />
       </template>
@@ -78,6 +79,13 @@ export default {
         v-if="!isValidUrl"
         :url="src"
       />
+
+      <template #loading>
+        <q-spinner
+          color="primary"
+          size="1em"
+        />
+      </template>
     </q-img>
   </div>
 </template>
