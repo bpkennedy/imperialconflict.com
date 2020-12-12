@@ -1,6 +1,6 @@
 import axios from 'axios'
-import auth from '../services/auth'
-import { USER_PROFILE_UPDATED_ACTION } from '../store'
+import auth from '../api/auth'
+import { USER_PROFILE_REFRESH_REQUESTED_ACTION } from '../store'
 
 export default async ({ store, Vue }) => {
   console.log('API Base URL environment variable is: ' + process.env.API_BASE_URL)
@@ -9,7 +9,6 @@ export default async ({ store, Vue }) => {
 
   if (auth.loggedIn()) {
     auth.setAxiosAuthHeader()
-    await auth.setProfile()
-    store.dispatch(USER_PROFILE_UPDATED_ACTION)
+    await store.dispatch(USER_PROFILE_REFRESH_REQUESTED_ACTION)
   }
 }

@@ -1,5 +1,5 @@
 <script>
-import { PlanetView } from '../services/models'
+import { PlanetView } from 'src/api/PlanetViewModel'
 export default {
   components: {
     CardTitle: () => import('./CardTitle.vue'),
