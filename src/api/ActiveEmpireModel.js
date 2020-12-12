@@ -12,13 +12,13 @@ export function ActiveEmpire(
 ) {
   Object.assign(this, composedSchema[ACTIVE_EMPIRE_SCHEMA])
 
-  this.avatar_url = 'https://cdn.quasar.dev/img/avatar2.jpg' // TODO temporary image - empImage
+  this.avatar_url = empImage
   this.family_id = empFamId
   this.id = empId
   this.name = empName
   this.galaxy.name = galName
   this.galaxy.description = galDesc
-  this.galaxy.map_image_path = 'https://cdn.quasar.dev/img/mountains.jpg' // TODO temporary image - galImage
+  this.galaxy.map_image_path = galImage
   this.galaxy.turn = galTurn
 }
 

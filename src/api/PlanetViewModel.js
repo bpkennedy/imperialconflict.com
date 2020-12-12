@@ -38,7 +38,7 @@ function transformPlanetDetailToModels(dataItem) {
   return new PlanetView(
     dataItem.coordinates.label,
     dataItem.coordinates.number,
-    'https://4.bp.blogspot.com/-QfDLT2JXSWA/Vkdgm5fiQbI/AAAAAAAABA4/PbFe3xP-T2Y/s1600/Alpine800.png', // dataItem.image_path,
+    'https://4.bp.blogspot.com/-QfDLT2JXSWA/Vkdgm5fiQbI/AAAAAAAABA4/PbFe3xP-T2Y/s1600/Alpine800.png', // TODO temporary planet image hard-coded - dataItem.image_path
     dataItem.bonuses,
     dataItem.system.name,
     dataItem.system.coordinates.galaxy_id,

@@ -14,7 +14,7 @@ export function transformPlanetBonuses (bonuses) {
     const newBonus = new PlanetBonus(
       key,
       wholeNumberFromDecimal(stringToDecimal(value)),
-      'https://imperialconflict.com/images/Status/resource4.gif')
+      'https://imperialconflict.com/images/Status/resource4.gif') // TODO temporarily hard-coded bonus image
     bonusesArray.push(newBonus)
   }
   return bonusesArray
