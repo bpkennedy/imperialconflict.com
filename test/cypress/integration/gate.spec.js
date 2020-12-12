@@ -22,7 +22,7 @@ describe('Gate', function () {
     cy.contains('#7143').should('be.visible')
     cy.contains('#7567').should('be.visible')
     cy.contains('FoohonPie').should('be.visible')
-    cy.contains('Enter Virgo 2').should('not.be.visible')
+    cy.contains('Enter Virgo 2').should('not.exist')
 
     cy.logout()
     cy.loginUser({
@@ -30,7 +30,7 @@ describe('Gate', function () {
       password: 'foobarbaz',
     })
     cy.verifyGatePage()
-    cy.contains('FoohonPie').should('not.be.visible')
+    cy.contains('FoohonPie').should('not.exist')
     cy.contains('Enter Virgo 2').should('be.visible')
   })
 })
