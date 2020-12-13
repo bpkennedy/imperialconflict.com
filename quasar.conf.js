@@ -124,9 +124,6 @@ module.exports = function (/* ctx */) {
       lang: 'en-us', // Quasar language pack
       config: {
         dark: true,
-        loading: {
-          delay: 300,
-        },
       },
 
       // Possible values for "importStrategy":
@@ -148,7 +145,6 @@ module.exports = function (/* ctx */) {
       plugins: [
         'Meta',
         'LocalStorage',
-        'Loading',
       ],
     },
 
