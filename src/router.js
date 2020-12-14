@@ -60,6 +60,14 @@ const routes = [
     beforeEnter: requiresAuth,
   },
   {
+    path: '/hq',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Hq.vue') },
+    ],
+    beforeEnter: requiresAuth,
+  },
+  {
     path: '*',
     component: () => import('pages/Error404.vue'),
   },
