@@ -1,5 +1,6 @@
 <script>
 import { ActiveEmpire } from '../api/ActiveEmpireModel'
+import { SELECTED_CURRENT_EMPIRE_ACTION } from '../store'
 export default {
   components: {
     SafeImage: () => import('./SafeImage.vue'),
@@ -17,9 +18,8 @@ export default {
     expanded: false,
   }),
   methods: {
-    // TODO placeholder method for clicking on Active Empire Card
-    doSomething() {
-      console.log('test')
+    selectEmpire() {
+      this.$store.dispatch(SELECTED_CURRENT_EMPIRE_ACTION, this.activeEmpire.id)
     },
     checkIfOverflowing() {
       if(this.$refs[this.descriptionRef].clientHeight < this.$refs[this.descriptionRef].scrollHeight) {
@@ -33,7 +33,7 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {
+    setTimeout(() => {  // the dom will sometimes update faster than vue has time to check dom heights
       this.checkIfOverflowing()
     }, 100)
   },
@@ -44,8 +44,8 @@ export default {
   <q-card
     tabindex="0"
     class="column cursor-pointer active-empire no-active-hover"
-    @click="doSomething"
-    @keydown.enter="doSomething"
+    @click="selectEmpire"
+    @keydown.enter="selectEmpire"
     v-ripple
   >
     <q-item>

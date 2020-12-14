@@ -16,6 +16,7 @@ export const USER_PROFILE_REFRESH_REQUESTED_ACTION = 'USER_PROFILE_REFRESH_REQUE
 export const API_ERROR_OCCURRED_ACTION = 'API_ERROR_OCCURRED_ACTION'
 export const CLEAR_API_ERROR_MESSAGE_ACTION = 'CLEAR_API_ERROR_MESSAGE_ACTION'
 export const PLANET_DETAILS_REQUESTED_ACTION = 'PLANET_DETAILS_REQUESTED_ACTION'
+export const SELECTED_CURRENT_EMPIRE_ACTION = 'SELECTED_CURRENT_EMPIRE_ACTION'
 export const REQUESTED_CURRENT_EMPIRE_ACTION = 'REQUESTED_CURRENT_EMPIRE_ACTION'
 
 const SET_USER_MUTATION = 'SET_USER_MUTATION'
@@ -86,6 +87,14 @@ export default new Vuex.Store({
       await asyncRequestWithLoader({
         tryCb: async () => {
           commit(SET_LOADED_PLANET_VIEW_MUTATION, await getPlanetView(planetId))
+        },
+      })
+    },
+    async [SELECTED_CURRENT_EMPIRE_ACTION](context, empireId) {
+      await asyncRequestWithLoader({
+        tryCb: async () => {
+          LocalStorage.set(CURRENT_EMPIRE_ID_STORAGE_TOKEN, empireId)
+          await router.push('/hq')
         },
       })
     },
