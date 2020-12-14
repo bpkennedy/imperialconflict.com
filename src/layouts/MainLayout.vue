@@ -2,6 +2,9 @@
 import { USER_LOGOUT_PRESS_ACTION } from '../store'
 import { mapState } from 'vuex'
 export default {
+  components: {
+    ImperialConflictBlankPage: () => import('../pages/ImperialConflictBlankPage.vue'),
+  },
   data () {
     return {
       left: false,
@@ -85,7 +88,9 @@ export default {
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <imperial-conflict-blank-page>
+        <router-view />
+      </imperial-conflict-blank-page>
     </q-page-container>
   </q-layout>
 </template>
