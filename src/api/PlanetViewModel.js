@@ -1,4 +1,4 @@
-import { baseSchema, composedSchema, EMPIRE_SCHEMA, PLANET_SCHEMA, SYSTEM_SCHEMA } from 'src/api/schemas'
+import { baseSchema, composedSchema, BASIC_EMPIRE_SCHEMA, PLANET_SCHEMA, SYSTEM_SCHEMA } from 'src/api/schemas'
 import { transformPlanetBonuses } from 'src/api/PlanetBonusModel'
 import Vue from 'vue'
 
@@ -17,7 +17,7 @@ export function PlanetView (
   empFamilyId,
 ) {
   this.system = Object.assign({}, baseSchema[SYSTEM_SCHEMA])
-  this.empire = Object.assign({}, baseSchema[EMPIRE_SCHEMA])
+  this.empire = Object.assign({}, baseSchema[BASIC_EMPIRE_SCHEMA])
   this.planet = Object.assign({}, composedSchema[PLANET_SCHEMA])
 
   this.planet.label = plLabel

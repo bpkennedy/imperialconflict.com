@@ -10,7 +10,8 @@ import {
 import store, { API_ERROR_OCCURRED_ACTION } from '../store'
 import { errorMessageFromApiResponse } from 'src/api/index'
 
-const AUTH_TOKEN_NAME = 'imperialConflictUserToken'
+export const STORAGE_PREFIX = 'imperialConflict'
+const AUTH_TOKEN_NAME = STORAGE_PREFIX + 'UserToken'
 
 export default {
   profile: null,
