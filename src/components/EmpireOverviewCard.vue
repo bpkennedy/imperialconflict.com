@@ -1,6 +1,6 @@
 <script>
 import { mapState } from 'vuex'
-import { deviceFormattedNumber } from 'src/services/math'
+import { deviceFormattedNumber, roundDown } from 'src/services/math'
 
 export default {
   components: {
@@ -11,6 +11,7 @@ export default {
     CardHeader: () => import('./CardHeader.vue'),
   },
   data: () => ({
+    roundDown,
     deviceFormattedNumber,
   }),
     computed: {
@@ -48,33 +49,31 @@ export default {
         </game-stat>
         <game-stat
           icon-url="https://imperialconflict.com/images/morale.png"
-          :label-value="currentEmpire.morale"
           class="q-pt-md"
         >
           Morale:
           <template #labelValue>
-            {{ currentEmpire.morale }}
+            {{ roundDown(currentEmpire.morale) }}%
           </template>
         </game-stat>
         <game-stat
           icon-url="https://imperialconflict.com/images/Status/networth.png"
-          :label-value="currentEmpire.networth"
         >
           Networth:
           <template #labelValue>
-            {{ currentEmpire.networth }}
+            {{ deviceFormattedNumber(currentEmpire.networth) }}
           </template>
         </game-stat>
         <game-stat>
           &#9679; Planets:
           <template #labelValue>
-            {{ currentEmpire.planets_count }}
+            {{ deviceFormattedNumber(currentEmpire.planets_count) }}
           </template>
         </game-stat>
         <game-stat>
           &#9679; Population:
           <template #labelValue>
-            {{ currentEmpire.population }}
+            {{ deviceFormattedNumber(currentEmpire.population) }}
           </template>
         </game-stat>
         <text-and-link

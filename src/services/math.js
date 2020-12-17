@@ -5,7 +5,11 @@ export const stringToDecimal = string => {
 }
 
 export const wholeNumberFromDecimal = decimal => {
-  return Math.floor(decimal * 100)
+  return roundDown(decimal * 100)
+}
+
+export const roundDown = decimal => {
+  return Math.floor(decimal)
 }
 
 export const isBonusAmountGreen = amount => {
