@@ -1,6 +1,9 @@
 <script>
 import { REQUESTED_CURRENT_EMPIRE_ACTION } from 'src/store'
 export default {
+  components: {
+    EmpireOverviewCard: () => import('../components/EmpireOverviewCard.vue'),
+  },
   meta: {
     title: 'Headquarters | Imperial Conflict',
     titleTemplate: title => `${title}`,
@@ -22,9 +25,19 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="column">
     <h2 class="smaller-h1 q-py-md q-my-none">
       HQ
     </h2>
+    <empire-overview-card
+      class="empire-overview-panel self-center"
+      :class="{'full-width': $q.screen.lt.sm}"
+    />
   </div>
 </template>
+
+<style lang="sass" scoped>
+.empire-overview-panel
+  width: 20rem
+  height: 20rem
+</style>
