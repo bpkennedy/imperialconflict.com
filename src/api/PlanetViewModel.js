@@ -1,5 +1,5 @@
 import { baseSchema, composedSchema, BASIC_EMPIRE_SCHEMA, PLANET_SCHEMA, SYSTEM_SCHEMA } from 'src/api/schemas'
-import { transformPlanetBonuses } from 'src/api/PlanetBonusModel'
+import { transformResources } from 'src/api/ResourceModel'
 import Vue from 'vue'
 
 export function PlanetView (
@@ -23,7 +23,7 @@ export function PlanetView (
   this.planet.label = plLabel
   this.planet.number = parseInt(plNumber, 10)
   this.planet.image = plImage
-  this.planet.bonuses = transformPlanetBonuses(plBonuses)
+  this.planet.bonuses = transformResources(plBonuses, { toPercentage: true })
   this.system.name = sysName
   this.system.galaxy_id = parseInt(sysGalaxyId, 10)
   this.system.x = parseInt(sysX, 10)

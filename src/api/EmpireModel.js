@@ -1,6 +1,7 @@
 import { composedSchema, DETAILED_EMPIRE_SCHEMA } from 'src/api/schemas'
 import Vue from 'vue'
 import { STORAGE_PREFIX } from 'src/api/auth'
+import { transformResources } from 'src/api/ResourceModel'
 
 export const CURRENT_EMPIRE_ID_STORAGE_TOKEN = STORAGE_PREFIX + 'CurrentEmpireId'
 
@@ -20,11 +21,7 @@ export function Empire (
   galaxyDescription,
   galaxyImage,
   galaxyTurn,
-  resGold,
-  resFood,
-  resIron,
-  resOctarine,
-  resEndurium,
+  resources,
 ) {
   Object.assign({}, composedSchema[DETAILED_EMPIRE_SCHEMA])
 
@@ -47,12 +44,7 @@ export function Empire (
   this.galaxy.map_image_path = galaxyImage
   this.galaxy.turn = galaxyTurn
 
-  this.resources = {}
-  this.resources.gold = resGold
-  this.resources.food = resFood
-  this.resources.iron = resIron
-  this.resources.octarine = resOctarine
-  this.resources.endurium = resEndurium
+  this.resources = transformResources(resources)
 }
 
 function transformCurrentEmpireToModel(dataItem) {
@@ -72,11 +64,7 @@ function transformCurrentEmpireToModel(dataItem) {
     dataItem.galaxy.description,
     dataItem.galaxy.map_image_path,
     dataItem.galaxy.turn,
-    dataItem.resources.gold,
-    dataItem.resources.food,
-    dataItem.resources.iron,
-    dataItem.resources.octarine,
-    dataItem.resources.endurium,
+    dataItem.resources,
   )
 }
 

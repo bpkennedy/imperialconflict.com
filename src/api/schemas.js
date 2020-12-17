@@ -1,7 +1,7 @@
 // base schemas
 export const SYSTEM_SCHEMA = 'SYSTEM_SCHEMA'
+export const RESOURCE_SCHEMA = 'RESOURCE_SCHEMA'
 export const BASIC_EMPIRE_SCHEMA = 'ACTIVE_EMPIRES_SCHEMA'
-const EMPIRE_RESOURCE_SCHEMA = 'EMPIRE_RESOURCE_SCHEMA'
 const GALAXY_SCHEMA = 'GALAXY_SCHEMA'
 export const PLANET_BONUS_SCHEMA = 'PLANET_BONUS_SCHEMA'
 
@@ -17,12 +17,9 @@ export const baseSchema = {
     amount: '',
     icon: '',
   },
-  [EMPIRE_RESOURCE_SCHEMA]: {
-    gold: 0,
-    food: 0,
-    iron: 0,
-    octarine: 0,
-    endurium: 0,
+  [RESOURCE_SCHEMA]: {
+    name: '',
+    amount: 0,
   },
   [GALAXY_SCHEMA]: {
     description: '',
@@ -46,18 +43,19 @@ export const baseSchema = {
 
 export const composedSchema = {
   [PLANET_SCHEMA]: {
+    bonuses: [ baseSchema[PLANET_BONUS_SCHEMA] ],
     label: '',
     number: '',
     image: '',
-    bonuses: [baseSchema[PLANET_BONUS_SCHEMA]],
   },
   [ACTIVE_EMPIRE_SCHEMA]: {
     ...baseSchema[BASIC_EMPIRE_SCHEMA],
-    galaxy: {
-      ...baseSchema[GALAXY_SCHEMA],
-    },
+    galaxy: { ...baseSchema[GALAXY_SCHEMA] },
   },
   [DETAILED_EMPIRE_SCHEMA]: {
+    ...baseSchema[BASIC_EMPIRE_SCHEMA],
+    galaxy: { ...baseSchema[GALAXY_SCHEMA] },
+    resources: [ baseSchema[RESOURCE_SCHEMA] ],
     leader: '',
     morale: '',
     networth: 0,
@@ -65,12 +63,5 @@ export const composedSchema = {
     planets_count: 0,
     race_id: 1,
     race_name: '',
-    ...baseSchema[BASIC_EMPIRE_SCHEMA],
-    galaxy: {
-      ...baseSchema[GALAXY_SCHEMA],
-    },
-    resources: {
-      ...baseSchema[EMPIRE_RESOURCE_SCHEMA],
-    },
   },
 }
