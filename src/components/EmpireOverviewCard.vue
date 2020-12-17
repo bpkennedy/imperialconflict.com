@@ -41,7 +41,9 @@ export default {
           :icon-url="resource.icon"
         >
           <template #labelValue>
-            {{ deviceFormattedNumber(resource.amount) }}
+            <span :class="resource.colorClass">
+              {{ deviceFormattedNumber(resource.amount) }}
+            </span>
           </template>
         </game-stat>
         <game-stat
