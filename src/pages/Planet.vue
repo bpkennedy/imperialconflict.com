@@ -29,10 +29,8 @@ export default {
 </script>
 
 <template>
-  <div>
-    <planet-detail
-      v-if="loadedPlanetDetails"
-      :planet-details="loadedPlanetDetails"
-    />
-  </div>
+  <planet-detail
+    v-if="loadedPlanetDetails"
+    :planet-details="loadedPlanetDetails"
+  />
 </template>
