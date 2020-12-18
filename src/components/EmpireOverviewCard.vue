@@ -34,6 +34,7 @@ export default {
           v-for="resource of currentEmpire.resources"
           :key="resource.name"
           :icon-url="resource.icon"
+          :icon-alt="resource.name"
         >
           <template #labelValue>
             <span :class="resource.colorClass">

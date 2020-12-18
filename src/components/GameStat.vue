@@ -8,15 +8,23 @@ export default {
       type: String,
       default: '',
     },
+    iconAlt: {
+      type: String,
+      default: '',
+    },
   },
 }
 </script>
 
 <template>
-  <div class="row col-12">
+  <div
+    class="row col-12"
+    :title="iconAlt"
+  >
     <safe-image
       v-if="iconUrl"
       :src="iconUrl"
+      :title="iconAlt"
       class="icon-image"
     />
     <div
