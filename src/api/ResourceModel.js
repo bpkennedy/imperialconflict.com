@@ -1,5 +1,5 @@
 import { baseSchema, RESOURCE_SCHEMA } from 'src/api/schemas'
-import { stringToDecimal, wholeNumberFromDecimal } from 'src/services/math'
+import { stringToDecimal, wholeNumberFromDecimal, deviceFormattedNumber } from 'src/services/math'
 
 const GOLD_RESOURCE_KEY = 'gold'
 const FOOD_RESOURCE_KEY = 'food'
@@ -41,7 +41,7 @@ export function Resource (name, amount, icon, colorClass) {
 export function transformResources(resources, options = {}) {
   const resourcesArray = []
   for (const [key, value] of Object.entries(resources)) {
-    const valueDisplay = options.toPercentage ? wholeNumberFromDecimal(stringToDecimal(value)) : value
+    const valueDisplay = options.toPercentage ? wholeNumberFromDecimal(stringToDecimal(value)) : deviceFormattedNumber(value)
     const newResource = new Resource(
       key,
       valueDisplay,

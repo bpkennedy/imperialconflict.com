@@ -2,6 +2,7 @@ import { composedSchema, DETAILED_EMPIRE_SCHEMA } from 'src/api/schemas'
 import Vue from 'vue'
 import { STORAGE_PREFIX } from 'src/api/auth'
 import { transformResources } from 'src/api/ResourceModel'
+import { roundDown, deviceFormattedNumber } from '../services/math'
 
 export const CURRENT_EMPIRE_ID_STORAGE_TOKEN = STORAGE_PREFIX + 'CurrentEmpireId'
 
@@ -26,10 +27,10 @@ export function Empire (
   Object.assign({}, composedSchema[DETAILED_EMPIRE_SCHEMA])
 
   this.leader = empLeader
-  this.morale = empMorale
-  this.networth = empNetworth
-  this.population = empPopulation
-  this.planets_count = empPlanetsCount
+  this.morale = `${roundDown(empMorale)}%`
+  this.networth = deviceFormattedNumber(empNetworth)
+  this.population = deviceFormattedNumber(empPopulation)
+  this.planets_count = deviceFormattedNumber(empPlanetsCount)
   this.race_id = empRaceId
   this.race_name = empRaceName
 
