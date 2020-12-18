@@ -46,27 +46,25 @@ export default {
           icon-url="https://imperialconflict.com/images/morale.png"
           class="q-pt-md"
         >
-          Morale:
+          <span>Morale:</span>
           <template #labelValue>
             {{ currentEmpire.morale }}
           </template>
         </game-stat>
-        <game-stat
-          icon-url="https://imperialconflict.com/images/Status/networth.png"
-        >
-          Networth:
+        <game-stat icon-url="https://imperialconflict.com/images/Status/networth.png">
+          <span>Networth:</span>
           <template #labelValue>
             {{ currentEmpire.networth }}
           </template>
         </game-stat>
         <game-stat>
-          &#9679; Planets:
+          <span>&#9679; Planets:</span>
           <template #labelValue>
             {{ currentEmpire.planets_count }}
           </template>
         </game-stat>
         <game-stat>
-          &#9679; Population:
+          <span>&#9679; Population:</span>
           <template #labelValue>
             {{ currentEmpire.population }}
           </template>
