@@ -63,7 +63,7 @@ const routes = [
     path: '/hq',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Hq.vue') },
+      { path: '', component: () => import('pages/Headquarters.vue') },
     ],
     beforeEnter: requiresAuth,
   },

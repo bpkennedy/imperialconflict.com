@@ -27,7 +27,7 @@ export default {
 <template>
   <div class="column">
     <h2 class="smaller-h1 q-py-md q-my-none">
-      HQ
+      Hq
     </h2>
     <empire-overview-card
       class="empire-overview-panel self-center"
