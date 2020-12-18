@@ -3,7 +3,7 @@ import { USER_LOGOUT_PRESS_ACTION } from '../store'
 import { mapState } from 'vuex'
 export default {
   components: {
-    ImperialConflictBlankPage: () => import('../pages/ImperialConflictBlankPage.vue'),
+    ResponsivePageWrapper: () => import('pages/ResponsivePageWrapper.vue'),
   },
   data () {
     return {
@@ -88,9 +88,9 @@ export default {
     </q-drawer>
 
     <q-page-container>
-      <imperial-conflict-blank-page>
+      <responsive-page-wrapper>
         <router-view />
-      </imperial-conflict-blank-page>
+      </responsive-page-wrapper>
     </q-page-container>
   </q-layout>
 </template>
