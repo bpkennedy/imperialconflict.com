@@ -15,6 +15,7 @@ export default {
     },
   },
   data: () => ({
+    timeout: null,
     descriptionIsOverflowing: false,
     expanded: false,
   }),
@@ -26,9 +27,14 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {  // the dom will sometimes update faster than vue has time to check dom heights
+    this.timeout = setTimeout(() => {  // the dom will sometimes update faster than vue has time to check dom heights
       this.checkIfOverflowing()
     }, 100)
+  },
+  beforeDestroy() {
+    if (this.timeout) {
+      window.clearTimeout(this.timer)
+    }
   },
 }
 </script>

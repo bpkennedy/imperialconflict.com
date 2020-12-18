@@ -56,8 +56,10 @@ export default {
       },
     },
   },
-  beforeDestroy: function() {
-    window.clearTimeout(this.timer)
+  beforeDestroy() {
+    if (this.timer) {
+      window.clearTimeout(this.timer)
+    }
   },
 }
 </script>
