@@ -47,7 +47,6 @@ export default {
           outline
           label="LOG OUT"
           aria-label="LOG OUT"
-          type="a"
           @click="$store.dispatch(USER_LOGOUT_PRESS_ACTION)"
         />
         <q-btn
@@ -57,9 +56,8 @@ export default {
           outline
           label="LOG IN"
           aria-label="LOG IN"
-          type="a"
           text-color="white"
-          to="/Login"
+          to="/login"
         />
         <q-btn
           dense

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import auth from './api/auth'
-import store, { USER_LOGOUT_PRESS_ACTION } from './store'
 
 Vue.use(VueRouter)
 
@@ -34,12 +33,6 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Welcome.vue') },
       { path: '/login', component: () => import('pages/Login.vue') },
-      { path: '/logout',
-        beforeEnter: async (to, from, next) => {
-          await store.dispatch(USER_LOGOUT_PRESS_ACTION)
-          next('/')
-        },
-      },
       { path: '/register', component: () => import('pages/Register.vue') },
     ],
     beforeEnter: redirectGateIfAuthenticated,
