@@ -49,7 +49,7 @@ module.exports = {
   rules: {
     'prefer-promise-reject-errors': 'off',
     'semi': ['error', 'never'],
-    'quotes': ['error', 'single'],
+    'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
     'no-trailing-spaces': 'error',
     'comma-dangle': ['error', 'always-multiline'],
 
