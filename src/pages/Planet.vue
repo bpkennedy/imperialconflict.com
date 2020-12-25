@@ -29,12 +29,8 @@ export default {
 </script>
 
 <template>
-  <q-page class="row justify-center items-start">
-    <div class="column col-12 q-pa-md self-stretch">
-      <planet-detail
-        v-if="loadedPlanetDetails"
-        :planet-details="loadedPlanetDetails"
-      />
-    </div>
-  </q-page>
+  <planet-detail
+    v-if="loadedPlanetDetails"
+    :planet-details="loadedPlanetDetails"
+  />
 </template>

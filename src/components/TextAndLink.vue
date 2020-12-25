@@ -15,9 +15,7 @@ export default {
 
 <template>
   <div class="q-pl-xs text-capitalize">
-    <span>
-      {{ text }}
-    </span>
+    <span v-html="text" />
     <a
       href=""
       rel="noopener noreferrer"

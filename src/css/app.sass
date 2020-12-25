@@ -17,3 +17,34 @@ a
 .tooltip-font-size
   font-size: 1rem
   line-height: 1rem
+
+.primary-outline
+  &:focus
+    outline: 0
+  &:focus-visible
+    outline: 1px solid $primary
+
+.no-outline-style
+  &:focus
+    outline: 0
+  &:focus-visible
+    outline: 0
+
+.avatar-image
+  width: 2.5rem
+  height: 2.5rem
+  max-width: 2.5rem
+  border: 1px solid $dark
+  border-radius: 50%
+  overflow: hidden
+
+.resource-gold
+  color: $gold-color
+.resource-food
+  color: $food-color
+.resource-iron
+  color: $iron-color
+.resource-octarine
+  color: $octarine-color
+.resource-endurium
+  color: $endurium-color

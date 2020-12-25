@@ -2,6 +2,9 @@
 import { USER_LOGOUT_PRESS_ACTION } from '../store'
 import { mapState } from 'vuex'
 export default {
+  components: {
+    ResponsivePageWrapper: () => import('pages/ResponsivePageWrapper.vue'),
+  },
   data () {
     return {
       left: false,
@@ -44,7 +47,6 @@ export default {
           outline
           label="LOG OUT"
           aria-label="LOG OUT"
-          type="a"
           @click="$store.dispatch(USER_LOGOUT_PRESS_ACTION)"
         />
         <q-btn
@@ -54,9 +56,8 @@ export default {
           outline
           label="LOG IN"
           aria-label="LOG IN"
-          type="a"
           text-color="white"
-          to="/Login"
+          to="/login"
         />
         <q-btn
           dense
@@ -85,7 +86,9 @@ export default {
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <responsive-page-wrapper>
+        <router-view />
+      </responsive-page-wrapper>
     </q-page-container>
   </q-layout>
 </template>
