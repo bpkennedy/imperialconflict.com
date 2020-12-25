@@ -10,7 +10,7 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 const zlib = require('zlib')
 
-module.exports = function (/* ctx */) {
+module.exports = function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -49,7 +49,7 @@ module.exports = function (/* ctx */) {
       vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // transpile: false,
-
+      devtool: ctx.dev ? '#cheap-module-source-map' : '#source-map',
       env: {
         ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
         ALGOLIA_KEY: process.env.ALGOLIA_KEY,
@@ -114,6 +114,17 @@ module.exports = function (/* ctx */) {
       watchOptions: {
         aggregateTimeout: 100,
         poll: 1000,
+      },
+      headers: {
+        'Content-Security-Policy':
+          `default-src 'self';` +
+          `script-src 'self';` +
+          `connect-src 'self' https://dev-api.imperialconflict.com;` +
+          `img-src 'self' https://cdn.quasar.dev https://imperialconflict.com;` +
+          `style-src 'unsafe-inline';` + // TODO need to find a way to add nonces to inline styles from vue-style-loader
+          `font-src 'self';` +
+          `upgrade-insecure-requests;` +
+          `block-all-mixed-content;`,
       },
       historyApiFallback: true,
     },
