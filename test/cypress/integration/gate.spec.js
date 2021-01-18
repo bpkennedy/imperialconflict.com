@@ -44,7 +44,6 @@ describe('Gate', function () {
     cy.contains('#7567').should('not.exist')
     cy.contains('Enter Manthano 3').should('not.exist')
     cy.contains('FoohonPie').should('not.exist')
-
   })
 
   it('user can expand and collapse overflowing description', () => {
@@ -66,5 +65,35 @@ describe('Gate', function () {
 
     cy.contains('EXPAND').should('be.visible')
     cy.contains('COLLAPSE').should('not.exist')
+  })
+
+  it('user can see joinable galaxies on the the Gate page', () => {
+    cy.loginUser({
+      email: 'foo@bar.baz',
+      password: 'foobarbaz',
+    })
+    cy.verifyGatePage()
+    cy.contains('37/200 Empires').should('be.visible')
+    cy.contains('8 Families').should('be.visible')
+    cy.contains('Join Andromeda 41').should('be.visible')
+
+    cy.contains('34/200 Empires').should('not.exist')
+    cy.contains('3 Families').should('not.exist')
+    cy.contains('Join Manthano 3').should('not.exist')
+
+    cy.logout()
+    cy.loginUser({
+      email: 'foo2@bar.baz',
+      password: 'foobarbaz',
+    })
+    cy.verifyGatePage()
+
+    cy.contains('37/200 Empires').should('be.visible')
+    cy.contains('8 Families').should('be.visible')
+    cy.contains('Join Andromeda 41').should('be.visible')
+
+    cy.contains('34/200 Empires').should('be.visible')
+    cy.contains('3 Families').should('be.visible')
+    cy.contains('Join Manthano 3').should('be.visible')
   })
 })
