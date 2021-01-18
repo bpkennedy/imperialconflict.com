@@ -54,7 +54,7 @@ export default {
       </q-item-section>
     </card-header>
 
-    <card-body>
+    <card-body class="short-card-body-height">
       <template #image>
         <safe-image
           v-if="isGoodEmpireImage"

@@ -1,12 +1,14 @@
 <script>
 import { mapState } from 'vuex'
 import { USER_PROFILE_REFRESH_REQUESTED_ACTION } from 'src/store'
+import JoinableGalaxyCard from 'components/JoinableGalaxyCard'
 export default {
   components: {
+    JoinableGalaxyCard,
     ActiveEmpireCard: () => import('../components/ActiveEmpireCard.vue'),
   },
   computed: {
-    ...mapState(['user', 'activeEmpires']),
+    ...mapState(['user', 'activeEmpires', 'joinableGalaxies']),
   },
   meta: {
     title: 'Gate | Imperial Conflict',
@@ -42,11 +44,20 @@ export default {
         :class="{'full-width': $q.screen.lt.sm}"
       />
     </div>
+    <div class="row justify-center items-center">
+      <joinable-galaxy-card
+        v-for="jg of joinableGalaxies"
+        :key="jg.id"
+        :joinable-galaxy="jg"
+        class="q-mr-lg q-mb-lg galaxy-card"
+        :class="{'full-width': $q.screen.lt.sm}"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="sass" scoped>
-.empire-card
+.empire-card, .galaxy-card
   width: 18rem
   height: auto
 </style>
