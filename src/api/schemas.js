@@ -9,6 +9,7 @@ export const PLANET_BONUS_SCHEMA = 'PLANET_BONUS_SCHEMA'
 export const PLANET_SCHEMA = 'PLANET_SCHEMA'
 export const ACTIVE_EMPIRE_SCHEMA = 'ACTIVE_EMPIRE_SCHEMA'
 export const DETAILED_EMPIRE_SCHEMA = 'DETAILED_EMPIRE_SCHEMA'
+export const JOINABLE_GALAXY_SCHEMA = 'JOINABLE_GALAXY_SCHEMA'
 
 
 export const baseSchema = {
@@ -42,6 +43,12 @@ export const baseSchema = {
 }
 
 export const composedSchema = {
+  [JOINABLE_GALAXY_SCHEMA]: {
+    ...baseSchema[GALAXY_SCHEMA],
+    empires_count_joined: 0,
+    empires_count_total: 0,
+    families_count: 0,
+  },
   [PLANET_SCHEMA]: {
     bonuses: [ baseSchema[PLANET_BONUS_SCHEMA] ],
     label: '',

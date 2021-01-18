@@ -7,6 +7,7 @@ import { getPlanetView } from 'src/api/PlanetViewModel'
 import { asyncRequestWithLoader } from 'src/api'
 import { LocalStorage } from 'quasar'
 import { CURRENT_EMPIRE_ID_STORAGE_TOKEN, getCurrentEmpire } from 'src/api/EmpireModel'
+import { getJoinableGalaxies } from 'src/api/JoinableGalaxyModel'
 Vue.use(Vuex)
 
 export const USER_REGISTRATION_SUBMIT_ACTION = 'USER_REGISTRATION_SUBMIT_ACTION'
@@ -23,6 +24,7 @@ const SET_USER_MUTATION = 'SET_USER_MUTATION'
 const SET_API_ERROR_MUTATION = 'SET_API_ERROR_MUTATION'
 const SET_LOADED_PLANET_VIEW_MUTATION = 'SET_LOADED_PLANET_VIEW_MUTATION'
 const SET_ACTIVE_EMPIRES_MUTATION = 'SET_ACTIVE_EMPIRES_MUTATION'
+const SET_JOINABLE_GALAXIES_MUTATION = 'SET_JOINABLE_GALAXIES_MUTATION'
 const SET_CURRENT_EMPIRE_MUTATION = 'SET_CURRENT_EMPIRE_MUTATION'
 const RESET_MODULE_MUTATION = 'RESET_MODULE_MUTATION'
 
@@ -30,6 +32,7 @@ const initialState = () => ({
   apiErrorMessage: null,
   loadedPlanetDetails: null,
   activeEmpires: [],
+  joinableGalaxies: [],
   currentEmpire: null,
   user: null,
 })
@@ -47,6 +50,7 @@ export default new Vuex.Store({
           await auth.setProfile()
           commit(SET_USER_MUTATION, auth.profile)
           commit(SET_ACTIVE_EMPIRES_MUTATION, getActiveEmpires(state) || [])
+          commit(SET_JOINABLE_GALAXIES_MUTATION, getJoinableGalaxies(state) || [])
         },
       })
     },
@@ -115,6 +119,7 @@ export default new Vuex.Store({
     [SET_API_ERROR_MUTATION]: setValue('apiErrorMessage'),
     [SET_LOADED_PLANET_VIEW_MUTATION]: setValue('loadedPlanetDetails'),
     [SET_ACTIVE_EMPIRES_MUTATION]: setValue('activeEmpires'),
+    [SET_JOINABLE_GALAXIES_MUTATION]: setValue('joinableGalaxies'),
     [SET_CURRENT_EMPIRE_MUTATION]: setValue('currentEmpire'),
     [RESET_MODULE_MUTATION](state) {
       Object.assign(state, initialState())
